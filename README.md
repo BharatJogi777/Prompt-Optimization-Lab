@@ -99,3 +99,15 @@ python examples/agents/evaluate_agent.py
 ~~~
 
 Read [Module 09](docs/09-agent-and-tool-calling-optimization.md) for bounded agent loops, tool contracts, argument validation, execution reliability, MCP, security, state management, evaluation, and production architecture. The sample traces demonstrate metric calculations; they are not measurements of a live agent.
+
+
+## Module 09 — Agent and tool-calling evaluation
+
+Run the dependency-free agent evaluation lab:
+
+~~~bash
+python -m unittest discover -s tests -p "test_agent_metrics.py" -v
+python examples/agents/evaluate_agent_runs.py
+~~~
+
+Read [Module 09](docs/09-production-agent-and-tool-calling-optimization.md) for agent-loop design, tool contracts, MCP integration, argument validation, retries, idempotency, evaluation datasets, tracing, and production controls. The sample traces are synthetic; they do not execute tools or invoke an LLM.
