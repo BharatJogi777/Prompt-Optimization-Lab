@@ -1,0 +1,15 @@
+{
+  "minimum": {
+    "task_success_rate": 0.80,
+    "citation_validity": 0.95
+  },
+  "maximum": {
+    "p95_latency_ms": 1500
+  },
+  "zero_tolerance": {
+    "unauthorized_call_rate": true
+  },
+  "max_regression": {
+    "p95_latency_ms": 200
+  }
+}
