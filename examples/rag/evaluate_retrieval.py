@@ -1,7 +1,12 @@
 """Run the synthetic retrieval evaluation example from the repository root."""
 
 import json
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from app.rag_eval.metrics import (
     hit_rate_at_k,
@@ -28,7 +33,7 @@ def main() -> None:
     ranked_lists = []
     judgments = []
 
-    print(f"Evaluating {len(queries)} synthetic queries at K={k}\\n")
+    print(f"Evaluating {len(queries)} synthetic queries at K={k}\n")
 
     for query in queries:
         query_id = query["query_id"]
@@ -61,7 +66,7 @@ def main() -> None:
 
     count = len(queries)
     if count:
-        print("\\nMacro averages")
+        print("\nMacro averages")
         print(f"  Precision@{k}: {sum(precision_scores) / count:.3f}")
         print(f"  Recall@{k}:    {sum(recall_scores) / count:.3f}")
         print(f"  HitRate@{k}:   {sum(hit_scores) / count:.3f}")
@@ -69,7 +74,7 @@ def main() -> None:
         print(f"  nDCG@{k}:       {sum(ndcg_scores) / count:.3f}")
 
     print(
-        "\\nNote: these are synthetic rankings for learning the metric calculations, "
+        "\nNote: these are synthetic rankings for learning the metric calculations, "
         "not measured performance of a live retriever."
     )
 
