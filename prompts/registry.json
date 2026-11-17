@@ -1,0 +1,17 @@
+{
+  "prompts": {
+    "support_ticket_classifier": {
+      "description": "Classifies a support ticket into a fixed category.",
+      "versions": {
+        "1.0.0": {
+          "file": "prompts/templates/support_ticket_classifier/1.0.0.txt",
+          "variables": ["ticket_text"]
+        },
+        "1.1.0": {
+          "file": "prompts/templates/support_ticket_classifier/1.1.0.txt",
+          "variables": ["ticket_text"]
+        }
+      }
+    }
+  }
+}
