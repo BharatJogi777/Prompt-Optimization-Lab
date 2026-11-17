@@ -1,0 +1,25 @@
+{
+  "description": "Tiny synthetic example for demonstrating retrieval metrics. Replace with human-labeled judgments from your own corpus.",
+  "queries": [
+    {
+      "query_id": "q1",
+      "question": "What is the refund period?",
+      "relevant_chunk_ids": ["policy-refund-1", "policy-refund-2"]
+    },
+    {
+      "query_id": "q2",
+      "question": "Which HTTP status indicates that authentication is required?",
+      "relevant_chunk_ids": ["api-auth-3"]
+    },
+    {
+      "query_id": "q3",
+      "question": "How should a payment timeout be retried?",
+      "relevant_chunk_ids": ["payments-retry-2", "payments-idempotency-1"]
+    }
+  ],
+  "ranked_results": {
+    "q1": ["policy-refund-1", "policy-shipping-2", "policy-refund-2"],
+    "q2": ["api-auth-3", "api-rate-limit-1", "api-errors-1"],
+    "q3": ["payments-timeout-1", "payments-retry-2", "payments-idempotency-1"]
+  }
+}
