@@ -1,0 +1,14 @@
+{
+  "baseline": {
+    "task_success_rate": 0.82,
+    "p95_latency_ms": 1200,
+    "unauthorized_call_rate": 0.0,
+    "citation_validity": 0.96
+  },
+  "candidate": {
+    "task_success_rate": 0.86,
+    "p95_latency_ms": 1250,
+    "unauthorized_call_rate": 0.0,
+    "citation_validity": 0.97
+  }
+}
