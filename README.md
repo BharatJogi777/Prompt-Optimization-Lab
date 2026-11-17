@@ -48,6 +48,17 @@ curl http://localhost:11434/api/tags
 | 09 | Agent optimization | Measure tool use and task completion |
 | 10 | Production capstone | Build a measurable optimization pipeline |
 
+## Module 06 — Prompt management example
+
+The repository includes a local, versioned prompt registry with environment-specific activation and unit tests:
+
+~~~bash
+python -c 'from pathlib import Path; from app.prompt_management.prompt_registry import PromptRegistry; r=PromptRegistry.from_files(root=Path.cwd(), registry_file="prompts/registry.json", environments_file="config/prompt-environments.json", environment="development"); print(r.render("support_ticket_classifier", ticket_text="My payment was deducted twice."))'
+pytest -q tests/test_prompt_registry.py
+~~~
+
+Read [Module 06](docs/06-production-prompt-management.md) before using the example in an application. The file-based registry is a learning implementation, not a hosted multi-user prompt platform.
+
 ## Core principle
 Never accept an optimized prompt merely because it sounds better. Compare it with a baseline on representative data, inspect category-level failures, and evaluate on a held-out test set.
 
