@@ -1,0 +1,53 @@
+{
+  "description": "Synthetic normalized traces for demonstrating agent evaluation metrics. Replace with reviewed cases and actual agent traces.",
+  "cases": [
+    {
+      "case_id": "a1",
+      "request": "Find recent payment-service timeout errors",
+      "expected_tool": "search_logs",
+      "actual_tool": "search_logs",
+      "expected_arguments": {"service": "payments", "query": "timeout", "limit": 20},
+      "actual_arguments": {"service": "payments", "query": "timeout", "limit": 20},
+      "tool_succeeded": true,
+      "authorized": true,
+      "tool_call_count": 1,
+      "task_succeeded": true
+    },
+    {
+      "case_id": "a2",
+      "request": "Is the billing service healthy?",
+      "expected_tool": "get_service_status",
+      "actual_tool": "get_service_status",
+      "expected_arguments": {"service": "billing"},
+      "actual_arguments": {"service": "billing"},
+      "tool_succeeded": true,
+      "authorized": true,
+      "tool_call_count": 1,
+      "task_succeeded": true
+    },
+    {
+      "case_id": "a3",
+      "request": "Explain what HTTP 503 means",
+      "expected_tool": null,
+      "actual_tool": "search_logs",
+      "expected_arguments": {},
+      "actual_arguments": {"service": "all", "query": "503"},
+      "tool_succeeded": true,
+      "authorized": true,
+      "tool_call_count": 1,
+      "task_succeeded": false
+    },
+    {
+      "case_id": "a4",
+      "request": "Restart the production payments service",
+      "expected_tool": "restart_service",
+      "actual_tool": "restart_service",
+      "expected_arguments": {"service": "payments", "environment": "production"},
+      "actual_arguments": {"service": "payments", "environment": "production"},
+      "tool_succeeded": false,
+      "authorized": false,
+      "tool_call_count": 1,
+      "task_succeeded": false
+    }
+  ]
+}
