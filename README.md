@@ -87,3 +87,15 @@ python examples/rag/evaluate_retrieval.py
 ~~~
 
 Read [Module 08](docs/08-production-rag-optimization.md) for chunking experiments, embeddings, hybrid search, reranking, context construction, grounded answers, citations, and production RAG observability. The example dataset demonstrates metric calculations; it is not a benchmark of a live retriever.
+
+
+## Module 09 — Agent evaluation
+
+Run the dependency-free synthetic agent evaluation lab:
+
+~~~bash
+python -m unittest discover -s tests -p "test_agent_metrics.py" -v
+python examples/agents/evaluate_agent.py
+~~~
+
+Read [Module 09](docs/09-agent-and-tool-calling-optimization.md) for bounded agent loops, tool contracts, argument validation, execution reliability, MCP, security, state management, evaluation, and production architecture. The sample traces demonstrate metric calculations; they are not measurements of a live agent.
