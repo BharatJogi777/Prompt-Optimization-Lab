@@ -59,6 +59,17 @@ pytest -q tests/test_prompt_registry.py
 
 Read [Module 06](docs/06-production-prompt-management.md) before using the example in an application. The file-based registry is a learning implementation, not a hosted multi-user prompt platform.
 
+## Module 07 — Observability example
+
+A local Ollama call can be traced with Langfuse. Configure Langfuse credentials as environment variables, then run:
+
+~~~bash
+pip install -r requirements.txt
+python examples/observability/ollama_langfuse_trace.py
+~~~
+
+See [Module 07](docs/07-llm-observability-and-tracing.md) and the [example guide](examples/observability/README.md). Review privacy requirements before tracing real user data.
+
 ## Core principle
 Never accept an optimized prompt merely because it sounds better. Compare it with a baseline on representative data, inspect category-level failures, and evaluate on a held-out test set.
 
