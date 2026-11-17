@@ -1,0 +1,11 @@
+{
+  "development": {
+    "support_ticket_classifier": "1.1.0"
+  },
+  "staging": {
+    "support_ticket_classifier": "1.1.0"
+  },
+  "production": {
+    "support_ticket_classifier": "1.0.0"
+  }
+}
