@@ -8,7 +8,7 @@ From the repository root:
 
 ~~~bash
 python -m unittest discover -s tests -p "test_agent_metrics.py" -v
-python examples/agents/evaluate_agent.py
+python examples/agents/evaluate_agent_runs.py
 ~~~
 
 No API key or third-party dependency is required.
@@ -16,7 +16,7 @@ No API key or third-party dependency is required.
 ## Files
 
 - evaluation_dataset.json: synthetic expected decisions and observed outcomes.
-- evaluate_agent.py: calculates aggregate metrics.
+- evaluate_agent_runs.py: calculates aggregate metrics.
 - app/agent_eval/metrics.py: reusable evaluation functions.
 - tests/test_agent_metrics.py: deterministic unit tests.
 
