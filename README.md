@@ -76,3 +76,14 @@ Never accept an optimized prompt merely because it sounds better. Compare it wit
 Prompt optimization changes instructions, examples, or program configuration. Fine-tuning changes model weights. They are different techniques.
 
 Study each module in order, run the examples, complete the exercises, and record experiment results.
+
+## Module 08 — RAG retrieval evaluation
+
+The retrieval-metrics lab is dependency-free and uses a synthetic dataset:
+
+~~~bash
+python -m unittest discover -s tests -p "test_rag_metrics.py" -v
+python examples/rag/evaluate_retrieval.py
+~~~
+
+Read [Module 08](docs/08-production-rag-optimization.md) for chunking experiments, embeddings, hybrid search, reranking, context construction, grounded answers, citations, and production RAG observability. The example dataset demonstrates metric calculations; it is not a benchmark of a live retriever.
