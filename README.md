@@ -111,3 +111,15 @@ python examples/agents/evaluate_agent_runs.py
 ~~~
 
 Read [Module 09](docs/09-production-agent-and-tool-calling-optimization.md) for agent-loop design, tool contracts, MCP integration, argument validation, retries, idempotency, evaluation datasets, tracing, and production controls. The sample traces are synthetic; they do not execute tools or invoke an LLM.
+
+
+## Module 10 — Production capstone
+
+Run the local release-gate lab:
+
+~~~bash
+python -m unittest discover -s tests -p "test_release_gate.py" -v
+python examples/capstone/run_release_gate.py
+~~~
+
+Read [Module 10](docs/10-production-capstone.md) for the end-to-end architecture, release manifests, evaluation splits, quality and safety gates, CI workflow, canary rollout, rollback, and capstone acceptance criteria. The sample metrics are synthetic and the gate does not deploy or promote software.
