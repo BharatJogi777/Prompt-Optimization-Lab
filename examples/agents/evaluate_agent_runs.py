@@ -1,35 +1,55 @@
-"""Evaluate a small synthetic set of agent tool-call traces."""
+"""Evaluate synthetic, normalized agent tool-use traces."""
 
 import json
 from pathlib import Path
 
-from app.agent_eval.metrics import evaluate_agent_runs, evaluate_run
-
+from app.agent_eval.metrics import (
+    argument_exact_match_rate,
+    average_tool_calls,
+    task_success_rate,
+    tool_execution_success_rate,
+    tool_selection_accuracy,
+    unauthorized_call_rate,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 DATASET = ROOT / "examples" / "agents" / "evaluation_dataset.json"
 
 
 def main() -> None:
-    runs = json.loads(DATASET.read_text(encoding="utf-8"))
-    print("Per-case results")
-    for run in runs:
-        result = evaluate_run(
-            expected_calls=run["expected_calls"],
-            actual_calls=run["actual_calls"],
-            task_success=run["task_success"],
-        )
-        print(
-            f'{run["case_id"]}: precision={result["tool_precision"]:.2f}, '
-            f'recall={result["tool_recall"]:.2f}, '
-            f'F1={result["tool_f1"]:.2f}, '
-            f'task_success={result["task_success"]:.0f}'
-        )
+    payload = json.loads(DATASET.read_text(encoding="utf-8"))
+    cases = payload["cases"]
 
-    print("\nMacro-averaged summary")
-    summary = evaluate_agent_runs(runs)
-    for key, value in summary.items():
-        print(f"{key}: {value:.3f}" if isinstance(value, float) else f"{key}: {value}")
+    summary = {
+        "cases": len(cases),
+        "tool_selection_accuracy": tool_selection_accuracy(
+            [case["expected_tool"] for case in cases],
+            [case["actual_tool"] for case in cases],
+        ),
+        "argument_exact_match_rate": argument_exact_match_rate(
+            [case["expected_arguments"] for case in cases],
+            [case["actual_arguments"] for case in cases],
+        ),
+        "tool_execution_success_rate": tool_execution_success_rate(
+            [case["tool_succeeded"] for case in cases if case["actual_tool"] is not None]
+        ),
+        "task_success_rate": task_success_rate(
+            [case["task_succeeded"] for case in cases]
+        ),
+        "average_tool_calls": average_tool_calls(
+            [case["tool_call_count"] for case in cases]
+        ),
+        "unauthorized_call_rate": unauthorized_call_rate(
+            [
+                case["authorized"]
+                for case in cases
+                if case["actual_tool"] is not None
+            ]
+        ),
+    }
+
+    for name, value in summary.items():
+        print(f"{name}: {value:.3f}" if isinstance(value, float) else f"{name}: {value}")
 
 
 if __name__ == "__main__":
